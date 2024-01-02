@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mad Libs</title>
+    <style>
+      .center {
+        display: flex;
+        text-align: center;
+        margin: auto;
+        width: 60%;
+        border: 1px solid black;
+        padding: 10px;
+        padding-top: 20px;
+      }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(() => {
+        $("#res").css({ visibility: "hidden", border: "none" });
+      });
+      const madLib = () => {
+        let pn = $("#pn").val();
+        let cn = $("#cn").val();
+        let ad = $("#ad").val();
+        let adj = $("#adj").val();
+        if (pn !== "" && cn !== "" && ad !== "" && adj !== "") {
+          let str = "<br><h3>Wendy's Crazy MadLibs Story</h3><br>";
+          str += `<p>One day, my friend <span style="color:green;font-weight: bolder">${pn}</span> was visiting New York and ran into <span style="color:green;font-weight: bolder">${cn}</span>. <span style="color:green;font-weight: bolder">${pn}</span> ran <span style="color:green;font-weight: bolder">${ad}</span> to meet <span style="color:green;font-weight: bolder">${cn}</span>. But <span style="color:green;font-weight: bolder">${cn}</span> turned out to be very <span style="color:green;font-weight: bolder">${adj}</span> and <span style="color:green;font-weight: bolder">${pn}</span> did not enjoy the meeting.</p>`;
+          $("#res").html(str);
+          $("#res").css({
+            visibility: "visible",
+            border: "1px solid black",
+            "border-radius": "15px",
+          });
+        } else {
+          window.alert("Enter all fields to get a madLib");
+        }
+      };
+    </script>
+  </head>
+  <body style="background-color: darkseagreen">
+    <br />
+    <h1 style="text-align: center">Mad Libs</h1>
+    <br /><br />
+    <div class="center">
+      <div class="container">
+        <table style="display: inline-block; text-align: right">
+          <form>
+            <tr>
+              <td><label for="ad">Person Name:</label></td>
+              <td><input type="text" id="pn" placeholder="e.g Superman" /></td>
+            </tr>
+            <tr>
+              <td><label for="ad">Character:</label></td>
+              <td><input type="text" id="cn" placeholder="e.g Batman" /></td>
+            </tr>
+            <tr>
+              <td><label for="ad">Adverb:</label></td>
+              <td><input type="text" id="ad" placeholder="e.g quickly" /></td>
+            </tr>
+            <tr>
+              <td><label for="adj">Adjective:</label></td>
+              <td><input type="text" id="adj" placeholder="e.g mean" /></td>
+            </tr>
+            <tr>
+              <td><br /></td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: center">
+                <button type="button" class="btn btn-light" onclick="madLib()">
+                  Tell Story
+                </button>
+              </td>
+            </tr>
+          </form>
+        </table>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div class="center" style="border: none">
+      <div id="res" style="display: inline-block"></div>
+    </div>
+  </body>
+</html>
